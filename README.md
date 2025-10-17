@@ -8,7 +8,10 @@ This is the three (3) templates that we have for the Owlery Management applicati
 
 
 # pages 
-contract-generator.html -> this is the landing page where you should find all the contracts,
-    it also added that it connects all the tempates for the contracts, show a preview of the contracts, 
-    export to PDF 
+index.html - this is the home page (so the "back to home button works)
 
+contract-generator.html -> location of all the contracts, connects all the tempates for the contracts, 
+    show a preview of the contracts, export to PDF 
+
+# run the code 
+python3 -m http.server 8000
