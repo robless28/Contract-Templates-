@@ -4,7 +4,7 @@ This is the three (3) templates that we have for the Owlery Management applicati
 # BEST VERSION 
 the one that was committed under "fixed it" or the one named "THIS IS THE BEST VERSION - TRUST" since 
     thats when i got the "back to home" button to work in the case theres any issues 
-    *like the damn esignature* please refer back to that version 
+    *like the damn esignature* please refer back to that version - ACTUALLY YEAH THIS VERIONS I GUESS 
 
 # whats been done
 - created the template for the real estate contract (real_estate_contract.html) 
