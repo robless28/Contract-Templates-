@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lease Contract</title>
+  <style>
+    @page { size: A4; margin: 28mm; }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      margin: 0;
+      color: #111;
+      background: white;
+    }
+    .page { padding: 28mm; }
+    header { margin-bottom: 22px; text-align: center; }
+    h1 { font-size: 20px; margin: 0; text-transform: uppercase; }
+    .meta { color: #666; font-size: 13px; margin-top: 4px; }
+    section { line-height: 1.5; font-size: 14px; margin-top: 14px; }
+    .clauses { margin-top: 14px; }
+    .clause { margin-bottom: 12px; }
+    footer { margin-top: 36px; color: #666; font-size: 13px; }
+    .signature-block { margin-top: 36px; }
+    .signature-line {
+      margin-top: 48px;
+      border-top: 1px solid #000;
+      width: 250px;
+      text-align: center;
+      padding-top: 4px;
+    }
+    .signature-pair {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+    .signature-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>{{ CONTRACT_TITLE }}</h1>
+      <div class="meta">City: {{ CITY }}, Date: {{ DATE_FULL }}</div>
+    </header>
+
+    <section>
+      <p>The following parties appear: <strong>{{ FULL_NAME_LESSOR }}</strong> (the “Lessor”) and <strong>{{ FULL_NAME_LESSEE }}</strong> (the “Lessee”).</p>
+      <p>The Lessor agrees to lease to the Lessee the following property under the terms described below:</p>
+
+      <div class="clauses">
+        <div class="clause">
+          <strong>I. OBJECT</strong><br>
+          The Lessor leases to the Lessee the property located at <strong>{{ PROPERTY_ADDRESS }}</strong>.
+        </div>
+        <div class="clause">
+          <strong>II. DURATION</strong><br>
+          The term of this lease shall be for a period of <strong>{{ DURATION_MONTHS }}</strong> months, starting on <strong>{{ START_DATE }}</strong> and ending on <strong>{{ END_DATE }}</strong>.
+        </div>
+        <div class="clause">
+          <strong>III. RENT</strong><br>
+          The monthly rent shall be <strong>{{ RENT_AMOUNT_CURRENCY }}</strong> (<em>{{ RENT_AMOUNT_WORDS }}</em>), payable in advance on the first day of each month.
+        </div>
+        <div class="clause">
+          <strong>IV. SECURITY DEPOSIT</strong><br>
+          The Lessee agrees to pay a security deposit of <strong>{{ SECURITY_DEPOSIT }}</strong>, which will be refunded upon termination of the contract, subject to the property being returned in good condition.
+        </div>
+        <div class="clause">
+          <strong>V. UTILITIES</strong><br>
+          The following utilities shall be paid by the Lessee: <strong>{{ UTILITIES_PAID_BY_LESSEE }}</strong>.
+        </div>
+        <div class="clause">
+          <strong>VI. JURISDICTION</strong><br>
+          Any dispute arising from this lease shall be resolved by the competent courts of <strong>{{ JURISDICTION }}</strong>.
+        </div>
+      </div>
+
+      <div class="signature-block">
+        <p>In witness whereof, the parties have signed this lease contract on the date above written.</p>
+
+        <div class="signature-pair">
+          <div class="signature-column">
+            <div class="signature-line">{{ FULL_NAME_LESSOR }}</div>
+            <div>Lessor</div>
+          </div>
+          <div class="signature-column">
+            <div class="signature-line">{{ FULL_NAME_LESSEE }}</div>
+            <div>Lessee</div>
+          </div>
+        </div>
+
+        <div class="signature-pair" style="margin-top:36px;">
+          <div class="signature-column">
+            <div class="signature-line">{{ WITNESS_1 }}</div>
+            <div>Witness 1</div>
+          </div>
+          <div class="signature-column">
+            <div class="signature-line">{{ WITNESS_2 }}</div>
+            <div>Witness 2</div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin-top:24px">
+      <p style="font-size:12px;color:#666">
+        Legal note: This contract is governed by Articles 2277 to 2326 of the Civil Code of Tamaulipas.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

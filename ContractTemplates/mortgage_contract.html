@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mortgage Contract</title>
+  <style>
+    @page { size: A4; margin: 28mm; }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      margin: 0;
+      color: #111;
+      background: white;
+    }
+    .page {
+      padding: 28mm;
+    }
+    header {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .meta {
+      color: #666;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    section {
+      line-height: 1.5;
+      font-size: 14px;
+      margin-top: 14px;
+    }
+    .clauses {
+      margin-top: 14px;
+    }
+    .clause {
+      margin-bottom: 12px;
+    }
+    footer {
+      margin-top: 36px;
+      color: #666;
+      font-size: 13px;
+    }
+    .signature-block {
+      margin-top: 36px;
+    }
+    .signature-line {
+      margin-top: 48px;
+      border-top: 1px solid #000;
+      width: 250px;
+      text-align: center;
+      padding-top: 4px;
+    }
+    .signature-pair {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+    .signature-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>{{ CONTRACT_TITLE }}</h1>
+      <div class="meta">City: {{ CITY }}, Date: {{ DATE_FULL }}</div>
+    </header>
+
+    <section>
+      <p>The following parties appear: <strong>{{ FULL_NAME_CREDITOR }}</strong> (the “Creditor”) and <strong>{{ FULL_NAME_DEBTOR }}</strong> (the “Debtor”).</p>
+
+      <div class="clauses">
+        <div class="clause">
+          <strong>I. OBJECT</strong><br>
+          The Creditor is granted a mortgage security over the property located at <strong>{{ PROPERTY_ADDRESS }}</strong>.
+        </div>
+        <div class="clause">
+          <strong>II. AMOUNT</strong><br>
+          The secured credit amount is <strong>{{ MORTGAGE_AMOUNT_CURRENCY }}</strong> (<em>{{ MORTGAGE_AMOUNT_WORDS }}</em>).
+        </div>
+        <div class="clause">
+          <strong>III. DURATION</strong><br>
+          The mortgage shall remain in effect until full repayment is completed according to the terms of the loan agreement.
+        </div>
+        <div class="clause">
+          <strong>IV. JURISDICTION</strong><br>
+          The parties agree that any disputes arising from this contract shall be resolved in the courts of <strong>{{ JURISDICTION }}</strong>.
+        </div>
+      </div>
+
+      <div class="signature-block">
+        <p>In witness whereof, the parties have signed this mortgage contract on the date above written.</p>
+
+        <div class="signature-pair">
+          <div class="signature-column">
+            <div class="signature-line">{{ FULL_NAME_CREDITOR }}</div>
+            <div>Creditor</div>
+          </div>
+          <div class="signature-column">
+            <div class="signature-line">{{ FULL_NAME_DEBTOR }}</div>
+            <div>Debtor</div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin-top:24px">
+      <p style="font-size:12px;color:#666">
+        Legal note: This contract constitutes a mortgage security instrument, governed by applicable mortgage and loan regulations under civil law.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

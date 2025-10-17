@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contract Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #0b3d91;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #0b3d91;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #092d6c;
+    }
+    .form-section {
+      margin-top: 30px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Contract Generator</h1>
+  <p style="margin-top:6px; font-size:14px;">Generate customized contracts in seconds</p>
+</header>
+
+<div class="container">
+  <form id="contractForm">
+    <div class="form-group">
+      <label for="contractType">Select Contract Type:</label>
+      <select id="contractType" required>
+        <option value="">-- Choose contract type --</option>
+        <option value="sale">Sale</option>
+        <option value="lease">Lease</option>
+        <option value="mortgage">Mortgage</option>
+      </select>
+    </div>
+
+    <div id="formFields" class="form-section"></div>
+
+    <button type="submit">Generate Preview</button>
+    <button type="button" id="downloadBtn">Download as PDF</button>
+  </form>
+</div>
+
+<footer>
+  &copy; 2025 Contract Generator Tool. All rights reserved.
+</footer>
+
+<!-- Contract Templates (hidden in <script> tags) -->
+<script type="text/template" id="template-sale">
+  <h2>Real Estate Sale Contract</h2>
+  <p>This contract is made on {{ DATE }} in {{ CITY }}.</p>
+  <p><strong>Seller:</strong> {{ SELLER }}</p>
+  <p><strong>Buyer:</strong> {{ BUYER }}</p>
+  <p><strong>Property:</strong> {{ PROPERTY }}</p>
+  <p><strong>Price:</strong> {{ PRICE }}</p>
+</script>
+
+<script type="text/template" id="template-lease">
+  <h2>Lease Contract</h2>
+  <p>Executed in {{ CITY }} on {{ DATE }}.</p>
+  <p><strong>Lessor:</strong> {{ LESSOR }}</p>
+  <p><strong>Lessee:</strong> {{ LESSEE }}</p>
+  <p><strong>Property:</strong> {{ ADDRESS }}</p>
+  <p><strong>Monthly Rent:</strong> {{ RENT }}</p>
+</script>
+
+<script type="text/template" id="template-mortgage">
+  <h2>Mortgage Contract</h2>
+  <p>Signed in {{ CITY }} on {{ DATE }}.</p>
+  <p><strong>Creditor:</strong> {{ CREDITOR }}</p>
+  <p><strong>Debtor:</strong> {{ DEBTOR }}</p>
+  <p><strong>Property:</strong> {{ MORTGAGE_ADDRESS }}</p>
+  <p><strong>Amount:</strong> {{ AMOUNT }}</p>
+</script>
+
+<!-- Modal Preview -->
+<div id="previewWindow" style="display:none;"></div>
+
+<!-- html2pdf library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+  const formFields = document.getElementById("formFields");
+  const form = document.getElementById("contractForm");
+  const previewDiv = document.getElementById("previewWindow");
+  const downloadBtn = document.getElementById("downloadBtn");
+
+  const fieldSets = {
+    sale: `
+      <label>Date: <input name="DATE" required></label>
+      <label>City: <input name="CITY" required></label>
+      <label>Seller: <input name="SELLER" required></label>
+      <label>Buyer: <input name="BUYER" required></label>
+      <label>Property: <input name="PROPERTY" required></label>
+      <label>Price: <input name="PRICE" required></label>
+    `,
+    lease: `
+      <label>Date: <input name="DATE" required></label>
+      <label>City: <input name="CITY" required></label>
+      <label>Lessor: <input name="LESSOR" required></label>
+      <label>Lessee: <input name="LESSEE" required></label>
+      <label>Property Address: <input name="ADDRESS" required></label>
+      <label>Monthly Rent: <input name="RENT" required></label>
+    `,
+    mortgage: `
+      <label>Date: <input name="DATE" required></label>
+      <label>City: <input name="CITY" required></label>
+      <label>Creditor: <input name="CREDITOR" required></label>
+      <label>Debtor: <input name="DEBTOR" required></label>
+      <label>Property Address: <input name="MORTGAGE_ADDRESS" required></label>
+      <label>Mortgage Amount: <input name="AMOUNT" required></label>
+    `
+  };
+
+  const contractTypeSelect = document.getElementById("contractType");
+
+  contractTypeSelect.addEventListener("change", () => {
+    const selected = contractTypeSelect.value;
+    formFields.innerHTML = fieldSets[selected] || "";
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const selected = contractTypeSelect.value;
+
+    // ✅ Guard clause to check if a contract type is selected
+    if (!selected) {
+      alert("Please select a contract type.");
+      return;
+    }
+
+    // ✅ Guard clause to check if the template exists
+    const templateElement = document.getElementById("template-" + selected);
+    if (!templateElement) {
+      alert("Template not found. Please check your selection.");
+      return;
+    }
+
+    const template = templateElement.innerHTML;
+    const formData = new FormData(form);
+    const values = {};
+    for (const [key, val] of formData.entries()) {
+      values[key.toUpperCase()] = val;
+    }
+    const filledTemplate = template.replace(/{{\s*(\w+)\s*}}/g, (_, key) => values[key] || '');
+
+    // Show in a new window
+    const previewWin = window.open("", "_blank");
+    previewWin.document.write(`
+      <html><head><title>Preview</title></head>
+      <body style="font-family: Georgia, serif; padding: 40px;">${filledTemplate}</body></html>
+    `);
+    previewWin.document.close();
+
+    // Save for PDF export
+    previewDiv.innerHTML = filledTemplate;
+  });
+
+  downloadBtn.addEventListener("click", () => {
+    if (!previewDiv.innerHTML.trim()) {
+      alert("Generate a preview first.");
+      return;
+    }
+    html2pdf().from(previewDiv).set({ margin: 10, filename: 'contract.pdf' }).save();
+  });
+</script>
+
+</body>
+</html>

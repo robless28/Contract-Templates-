@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Sale Contract</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 60px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        p {
+            text-align: justify;
+        }
+        strong {
+            text-transform: uppercase;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .signatures {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .signature-line {
+            margin-top: 50px;
+        }
+    </style>
+    <style media="print">
+        @page { size: A4; margin: 18mm; }
+        body { margin: 0; }
+        header, nav, .breadcrumbs { display: none; }
+        .section, p { widows: 2; orphans: 2; }
+    </style>
+</head>
+<body>
+    <header style="background:linear-gradient(180deg,#f8f9fb,#eef2fb);padding:12px 20px;border-bottom:1px solid #e3e7ee;margin-bottom:12px">
+        <div style="max-width:1024px;margin:0 auto;display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;gap:12px;align-items:center">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                    <rect x="2" y="2" width="20" height="20" rx="3" fill="#0b3d91" />
+                    <path d="M6 8h12M6 12h12M6 16h8" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+                <div style="font-weight:700;color:#0b3d91">Contract Templates</div>
+            </div>
+            <nav>
+                <a class="nav-link" href="index.html">Templates</a>
+                <a class="nav-link" href="generator.html">Generator</a>
+                <a class="nav-link" href="editor.html">Editor</a>
+                <a class="nav-link active" href="Legal_Contract.html">Last Generated</a>
+            </nav>
+        </div>
+    </header>
+
+    <div style="max-width:1024px;margin:0 auto;padding:0 20px;">
+        <div class="breadcrumbs">Templates → Real Estate → Template</div>
+        <h1>{{ header }}</h1>
+    </div>
+
+    <p>In <strong><<CITY>></strong> on <strong><<DATE>></strong>.</p>
+
+    <p>Appear: <strong><<FULL_NAME_SELLER>></strong> (<em>THE SELLER</em>) and 
+    <strong><<FULL_NAME_BUYER>></strong> (<em>THE BUYER</em>).</p>
+
+    <div class="section">
+        <h3>DECLARATIONS:</h3>
+        <p>I. THE SELLER declares to be the legal owner of the property located at 
+        <strong><<PROPERTY_ADDRESS>></strong> with the following characteristics: 
+        <strong><<PROPERTY_DESCRIPTION>></strong>.</p>
+        <p>II. THE BUYER expresses interest in purchasing this property.</p>
+    </div>
+
+    <div class="section">
+        <h3>CLAUSES:</h3>
+        <p><strong>I. OBJECT</strong><br>
+        THE SELLER transfers the property described to THE BUYER.</p>
+
+        <p><strong>II. PRICE</strong><br>
+        The agreed price is <strong><<PRICE_AMOUNT>></strong>, which THE BUYER pays at this act/in the following manner: 
+        <strong><<PAYMENT_METHOD>></strong>.</p>
+
+        <p><strong>III. DELIVERY</strong><br>
+        The material and legal delivery is carried out at this moment.</p>
+
+        <p><strong>IV. TAXES AND EXPENSES</strong><br>
+        The real estate acquisition tax and registration fees to the Public Property Registry shall be borne by THE BUYER.</p>
+
+        <p><strong>V. GUARANTEE</strong><br>
+        THE SELLER guarantees ownership and peaceful possession of the transferred property.</p>
+
+        <p><strong>VI. JURISDICTION</strong><br>
+        For interpretation and fulfillment of this contract, the parties submit to the competent courts of 
+        <strong><<JURISDICTION>></strong>.</p>
+    </div>
+
+    <div class="signatures">
+        <div class="signature-line">
+            _________________________<br>
+            <strong>Seller's Signature</strong>
+        </div>
+        <div class="signature-line">
+            _________________________<br>
+            <strong>Buyer's Signature</strong>
+        </div>
+    </div>
+
+    <hr style="margin-top:60px;">
+    <p><em>Legal note: This contract is primarily governed by Articles 2129 to 2178 of the Civil Code for the State of Tamaulipas (CCT).</em></p>
+
+    <!-- SECOND PAGE / VARIANT -->
+    <div class="page" style="page-break-before: always;">
+        <header style="text-align:center; margin-bottom:22px;">
+            <h1>{{ header }}</h1>
+            <div class="meta"><<CITY>> — <<DATE>></div>
+        </header>
+
+        <section style="line-height:1.5;font-size:14px;margin-top:10px">
+            <p>Between <<FULL_NAME_SELLER>> (THE SELLER) and <<FULL_NAME_BUYER>> (THE BUYER) regarding the property at <<PROPERTY_ADDRESS>>.</p>
+            <p>The property is described as: <<PROPERTY_DESCRIPTION>></p>
+            <p>Price: <<PRICE_AMOUNT>>. Payment method: <<PAYMENT_METHOD>></p>
+            <p>Jurisdiction: <<JURISDICTION>></p>
+        </section>
+
+        <footer style="margin-top:36px;color:#666;font-size:13px">
+            <p>Signed in <<CITY>> on <<DATE>></p>
+        </footer>
+    </div>
+</body>
+</html>
