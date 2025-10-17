@@ -2,14 +2,13 @@
 This is the three (3) templates that we have for the Owlery Management application for our Senior Project 
 
 # BEST VERSION 
-the one that was committed under "fixed it" or the one named "THIS IS THE BEST VERSION - TRUST" since 
-    thats when i got the "back to home" button to work in the case theres any issues 
-    *like the damn esignature* please refer back to that version - ACTUALLY YEAH THIS VERIONS I GUESS 
+TOO MANY BEST VERSIONS BUT THE ONE OF 10/17/25 @ 4 PM IS THE BEST FS
 
 # whats been done
 - created the template for the real estate contract (real_estate_contract.html) 
 - created the template for the lease contract (lease_contract.html)
 - created the template for the mortgage contract (mortgage_contract.html)
+
 - made the index be in the right place so it launches directly with the created "Home Page"     
     that says the text "Welcome to Contract Generator
                 Select a contract type and generate your legal document instantly.
@@ -17,12 +16,16 @@ the one that was committed under "fixed it" or the one named "THIS IS THE BEST V
 
 
 # pages 
-index.html - this is the home page (so the "back to home button works)
+index.html - this is the home page (so the "back to home button" works - PERFECT)
 
-contract-generator.html -> location of all the contracts, connects all the tempates for the contracts, 
-    show a preview of the contracts, export to PDF 
+contract-generator.html -> location of all the contracts on a drop-down, all tempates for the contracts connected, 
+    show a preview of the contracts, live writing update on the contract, etc 
 
 # run the code 
 python3 -m http.server 8000
 or
 python -m http.server
+
+
+# missing
+- SO THIS IS THE BEST VERSION I HAVE SO FAR ---- BUT I STILL WANT TO ISOLATE THE "SELECT CONTRACT TYPE WITH THE THINGS ABOUT REGION/COURT/LENGUAGE" AND ALSO I GUESS INCORPORATE THE ESIGNATURE??? IDK THAT WAS HARD AND THATS WHAT GOT US IN THIS MESS
