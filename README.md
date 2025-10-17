@@ -1,10 +1,15 @@
 # Contract-Templates-
 This is the three (3) templates that we have for the Owlery Management application for our Senior Project 
-// 
+
 
 # whats been done
-1- created the template for the real estate contract (real_estate_contract.html) 
-2- template for the 
+- created the template for the real estate contract (real_estate_contract.html) 
+- created the template for the lease contract (lease_contract.html)
+- created the template for the mortgage contract (mortgage_contract.html)
+- made the index be in the right place so it launches directly with the created "Home Page"     
+    that says the text "Welcome to Contract Generator
+                Select a contract type and generate your legal document instantly.
+                            Go to Contract Generator"
 
 
 # pages 
@@ -15,3 +20,5 @@ contract-generator.html -> location of all the contracts, connects all the tempa
 
 # run the code 
 python3 -m http.server 8000
+or
+python -m http.server
