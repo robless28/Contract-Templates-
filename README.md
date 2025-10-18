@@ -29,3 +29,11 @@ python -m http.server
 
 # missing
 - SO THIS IS THE BEST VERSION I HAVE SO FAR ---- BUT I STILL WANT TO ISOLATE THE "SELECT CONTRACT TYPE WITH THE THINGS ABOUT REGION/COURT/LENGUAGE" AND ALSO I GUESS INCORPORATE THE ESIGNATURE??? IDK THAT WAS HARD AND THATS WHAT GOT US IN THIS MESS
+
+
+# updates 
+- change the date so instead of #'s is the words 
+- real state and mortgage (money in word and select if dollars or mexican)
+- re-update the contract with the NEW templates (discord chat)
+- theres some color inspo/idk 
+- add the option of the contracts also being saved to the website and be viewable 
